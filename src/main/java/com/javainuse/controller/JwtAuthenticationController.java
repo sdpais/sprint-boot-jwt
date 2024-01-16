@@ -20,6 +20,7 @@ import com.javainuse.service.JwtUserDetailsService;
 import com.javainuse.config.JwtTokenUtil;
 import com.javainuse.model.JwtRequest;
 import com.javainuse.model.JwtResponse;
+import com.javainuse.model.UserDTO;
 
 @RestController
 @CrossOrigin
@@ -45,6 +46,11 @@ public class JwtAuthenticationController {
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
 		return ResponseEntity.ok(new JwtResponse(token));
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+		return ResponseEntity.ok(userDetailsService.save(user));
 	}
 
 	private void authenticate(String username, String password) throws Exception {
