@@ -2,7 +2,8 @@ package com.javainuse.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+// import javax.persistence.*; // for Spring Boot 2
+import jakarta.persistence.*; // for Spring Boot 3
 
 @Entity
 @Table(name = "user")
